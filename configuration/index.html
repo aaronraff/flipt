@@ -340,6 +340,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#metrics" title="Metrics" class="md-nav__link">
+    Metrics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#authentication" title="Authentication" class="md-nav__link">
     Authentication
   </a>
@@ -502,6 +509,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" title="Metrics" class="md-nav__link">
+    Metrics
+  </a>
   
 </li>
       
@@ -684,8 +698,25 @@
 <p class="admonition-title">Warning</p>
 <p>Enabling in-memory caching when running more that one instance of Flipt is not advised as it will lead to unpredictable results.</p>
 </div>
+<h2 id="metrics">Metrics</h2>
+<p>Flipt exposes <a href="https://prometheus.io/">Prometheus</a> metrics at the <code>/metrics</code> HTTP endpoint. To see which metrics are currently supported, point your browser to <code>FLIPT_HOST/metrics</code> (ex: <code>localhost:8080/metrics</code>).</p>
+<p>You should see a bunch of metrics being recorded such as:</p>
+<div class="codehilite"><pre><span></span>flipt_cache_hit_total{cache=&quot;memory&quot;,type=&quot;flag&quot;} 1
+flipt_cache_miss_total{cache=&quot;memory&quot;,type=&quot;flag&quot;} 1
+...
+go_gc_duration_seconds{quantile=&quot;0&quot;} 8.641e-06
+go_gc_duration_seconds{quantile=&quot;0.25&quot;} 2.499e-05
+go_gc_duration_seconds{quantile=&quot;0.5&quot;} 3.5359e-05
+go_gc_duration_seconds{quantile=&quot;0.75&quot;} 6.6594e-05
+go_gc_duration_seconds{quantile=&quot;1&quot;} 0.00026651
+go_gc_duration_seconds_sum 0.000402094
+go_gc_duration_seconds_count 5
+...
+</pre></div>
+
+
 <h2 id="authentication">Authentication</h2>
-<p>Flipt currently has no built in authentication, authorization or encryption as Flipt was designed to work inside your trusted architecture and not be exposed publicly.</p>
+<p>There is currently no built in authentication, authorization or encryption as Flipt was designed to work inside your trusted architecture and not be exposed publicly.</p>
 <p>If you do wish to expose the Flipt dashboard and REST API publicly using HTTP Basic Authentication, you can do so by using a reverse proxy. There is an <a href="https://github.com/markphelps/flipt/tree/master/examples/auth">example</a> provided in the GitHub repository showing how this could work.</p>
                 
                   
